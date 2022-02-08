@@ -115,14 +115,7 @@ public class SBUEmojiManager: NSObject {
     
     // MARK: - private function
     static func useReaction(channel: SBDBaseChannel?) -> Bool {
-        guard let groupChannel = channel as? SBDGroupChannel else { return false }
-        
-        if let appInfo = SBDMain.getAppInfo(),
-           appInfo.useReaction, !groupChannel.isSuper, !groupChannel.isBroadcast  {
-            return true
-        } else {
-            return false
-        }
+        return false
     }
 
     static func loadAllEmojis(completionHandler: @escaping (
