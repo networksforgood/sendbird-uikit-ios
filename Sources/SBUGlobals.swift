@@ -57,4 +57,6 @@ public class SBUGlobals: NSObject {
     /// - Since: 2.0.0
     public static var imageResizingSize: CGSize = UIScreen.main.bounds.size;
     
+    /// User list query metadata filter
+    public static var userListMetadataFilter: [String: [String]]?
 }

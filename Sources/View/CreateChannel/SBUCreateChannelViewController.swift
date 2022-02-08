@@ -258,6 +258,11 @@ open class SBUCreateChannelViewController: SBUBaseViewController {
         else if !self.useCustomizedUsers {
             if self.userListQuery == nil {
                 self.userListQuery = SBDMain.createApplicationUserListQuery()
+                if let filters = SBUGlobals.userListMetadataFilter?.enumerated() {
+                    for filter in filters {
+                        self.userListQuery?.setMetaDataFilterWithKey(filter.element.key, values: filter.element.value)
+                    }
+                }
                 self.userListQuery?.limit = self.limit
             }
             

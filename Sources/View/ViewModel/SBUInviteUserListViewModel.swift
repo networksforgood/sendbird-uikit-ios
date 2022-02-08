@@ -111,6 +111,11 @@ class SBUInviteUserListViewModel: SBUChannelActionViewModel {
     private func loadNextApplicationUserList() {
         if self.userListQuery == nil {
             self.userListQuery = SBDMain.createApplicationUserListQuery()
+            if let filters = SBUGlobals.userListMetadataFilter?.enumerated() {
+                for filter in filters {
+                    self.userListQuery?.setMetaDataFilterWithKey(filter.element.key, values: filter.element.value)
+                }
+            }
             self.userListQuery?.limit = SBUInviteUserListViewModel.limit
         }
         

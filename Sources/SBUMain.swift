@@ -29,14 +29,17 @@ public class SBUMain: NSObject {
     ///
     /// - Parameters:
     ///   - applicationId: Application ID
+    ///   - userListMetadataFilter: Metadata dictionary used to apply filters over user list query
     ///   - migrationStartHandler: Do something to display the progress of the DB migration.
     ///   - completionHandler: Do something to display the completion of the DB migration.
     ///
     /// - Since: 2.2.0
     public static func initialize(applicationId: String,
+                                  userListMetadataFilter: [String: [String]]? = nil,
                                   migrationStartHandler: @escaping (() -> Void),
                                   completionHandler: @escaping ((_ error: SBDError?) -> ())) {
         SBUGlobals.ApplicationId = applicationId
+        SBUGlobals.userListMetadataFilter = userListMetadataFilter
         
         SBDMain.addExtension(SBUConstant.sbdExtensionKeyUIKit, version: SBUMain.shortVersion)
     
