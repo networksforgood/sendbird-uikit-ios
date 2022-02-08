@@ -8,7 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "SendBirdUIKit",
-            targets: ["SendBirdUIKitTarget"]
+            targets: ["SendBirdUIKit"]
         ),
     ],
     dependencies: [
@@ -19,18 +19,13 @@ let package = Package(
         ),
     ],
     targets: [
-        .binaryTarget(
-            name: "SendBirdUIKit",
-            path: "Framework/SendBirdUIKit.xcframework"
-        ),
         .target(
-            name: "SendBirdUIKitTarget",
+            name: "SendBirdUIKit",
             dependencies: [
-                .target(name: "SendBirdUIKit"),
                 .product(name: "SendBirdSDK", package: "SendBirdSDK")
             ],
-            path: "Framework/Dependency",
-            exclude: ["Sample", "Sources"]
+            path: "Sources",
+            exclude: ["Sample, Framework"]
         ),
     ]
 )
